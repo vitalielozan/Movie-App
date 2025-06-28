@@ -33,9 +33,9 @@ npm run dev
 ## 🌐 API
 
 - This app uses a public movie API [The Movie Database (TMDb)] (https://www.themoviedb.org/).
-- Your API key is stored securely in a local `config.js` file that is ignored by version control (see `.gitignore`):
-  // src/config/config.js
-  export const API_KEY = "your_api_key_here";
+- Your API key is stored securely in a local `config.js` file that is ignored by version control (see `.gitignore`)
+- // src/config/config.js
+- export const API_KEY = "your_api_key_here";
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
