@@ -44,7 +44,7 @@ function HomePage() {
     <div className="space-y-12">
       <SearchBar />
       <MotionDiv>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid gap-6 px-4 py-8 sm:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
           {movies.map((movie) => (
             <MovieCard movie={movie} key={movie.id} />
           ))}
