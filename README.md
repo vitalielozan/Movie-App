@@ -23,7 +23,7 @@ A simple and responsive Movie App built with *Vite + *React.
 - Clone the repo
 
 ```
-git clone
+git clone https://github.com/vitalielozan/Movie-App.git
 cd movie-app
 npm install
 npm run dev
