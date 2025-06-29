@@ -1,32 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router";
-import { searchMovies } from "../services/api.js";
+import React from "react";
+import { useSearchParams } from "react-router-dom";
+import { useFetchMovie } from "../hooks/useFetchMovie.js";
 import MotionDiv from "../components/MotionDiv.jsx";
 import MovieCard from "../components/MovieCard.jsx";
 
 function SearchPage() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q")?.toLowerCase() || "";
-  const [seachMovies, setSearchMovies] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadSearchMovie = async () => {
-      try {
-        const searchMovie = await searchMovies(query);
-        setSearchMovies(searchMovie.results);
-      } catch (error) {
-        console.log(error);
-        setError("Error to searching movies...");
-      } finally {
-        setLoading(false);
-      }
-    };
-    setTimeout(() => {
-      loadSearchMovie();
-    }, 1000);
-  }, [query]);
+  const { movie, error, loading } = useFetchMovie("query", query);
+  const searchMovies = movie.results || [];
 
   if (loading)
     return (
@@ -51,7 +33,7 @@ function SearchPage() {
 
         <MotionDiv>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {seachMovies.map((movie) => (
+            {searchMovies.map((movie) => (
               <MovieCard movie={movie} key={movie.id} />
             ))}
           </div>

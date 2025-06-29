@@ -1,30 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MovieCard from "../components/MovieCard.jsx";
 import MotionDiv from "../components/MotionDiv.jsx";
-import { getPopularMovies } from "../services/api.js";
 import SearchBar from "../components/SearchBar.jsx";
+import { useFetchMovie } from "../hooks/useFetchMovie.js";
 
 function HomePage() {
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadPopularMovies = async () => {
-      try {
-        const popularMovies = await getPopularMovies();
-        setMovies(popularMovies.results);
-      } catch (error) {
-        console.log(error);
-        setError("Error to fetching movies..");
-      } finally {
-        setLoading(false);
-      }
-    };
-    setTimeout(() => {
-      loadPopularMovies();
-    }, 1000);
-  }, []);
+  const { movie, error, loading } = useFetchMovie("all");
+  const movies = movie.results || [];
 
   if (loading)
     return (
