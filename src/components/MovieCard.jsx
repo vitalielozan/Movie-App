@@ -39,9 +39,9 @@ function MovieCard({ movie }) {
         <h2 className="card-title line-clamp-2 text-lg font-semibold text-gray-800 dark:text-gray-100">
           {movie.title}
         </h2>
-        <p className="text-md line-clamp-4 text-justify text-gray-800 dark:text-gray-200">
+        {/* <p className="text-md line-clamp-4 text-justify text-gray-800 dark:text-gray-200">
           {movie.overview}
-        </p>
+        </p> */}
         <div className="mt-2 flex justify-between text-xs text-gray-500 dark:text-gray-400">
           <span>{movie.release_date?.split("-")[0]}</span>
           <span>Rating: {movie.vote_average.toFixed(1)}</span>
